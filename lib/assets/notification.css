@@ -11,7 +11,7 @@ a {
 }
 
 #notification {
-  height: 80px;
+  height: 100vh;
   width: 400px;
   margin: 0;
   position: relative;
@@ -23,12 +23,18 @@ a {
   -webkit-user-select: none;
 }
 #notification.vertical.single {
-  height: 120px;
+  height: 100vh;
 }
 #notification.vertical.double {
-  height: 160px;
+  height: 100vh;
 }
-#notification .icon {
+#notification.horizontal .icon {
+  position: relative;
+  top: calc(50vh - 40px);
+  width: 90px;
+  height: 80px;
+  float: left;
+}#notification.vertical .icon {
   width: 90px;
   height: 80px;
   float: left;
@@ -56,13 +62,15 @@ a {
   width: 308px;
 }
 #notification .message {
-  height: 80px;
-  width: 310px;
+  left: 0;
+  height: 100vh;
+  width: 100%;
   float: left;
   text-overflow: clip;
-  white-space: nowrap;
-  overflow: hidden;
   position: relative;
+}
+#notification.nobutton .message {
+  float: none;
 }
 #notification .message:before {
   content: '';
@@ -81,14 +89,28 @@ a {
   font: bold 18px Myriad, Helvetica, Arial, sans-serif;
 }
 #notification .message p {
+  z-index: 100;
+  position: relative;
   padding: 0;
   margin: 0;
+  width: 100%;
   font: bold 13px Myriad, Helvetica, Arial, sans-serif;
   font-weight: normal;
+  display: block;
 }
 #notification #buttons {
   float: right;
   position: relative;
+}
+#notification #buttons a {
+  box-sizing: border-box;
+  top: 0;
+  display: block;
+  width: 100px;
+  font: 13px Helvetica, Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  right: 0;
 }
 #notification.horizontal #buttons {
   border-left: 1px solid black;
@@ -97,11 +119,9 @@ a {
 #notification.vertical #buttons {
   width: 100%;
   position: absolute;
-  top: 80px;
-}
-#notification.vertical.single #buttons a {
-  height: 40px;
-  line-height: 40px;
+  top: 100vh;
+  transform-box: content-box;
+  transform: translateY(-100%);
 }
 #notification.vertical #buttons a {
   padding-left: 20px;
@@ -113,29 +133,23 @@ a {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
 }
 #notification.double #buttons a {
-  height: 40px;
-  line-height: 40px;
+  line-height: 50vh;
 }
 #notification.double.horizontal #buttons a:nth-child(2) {
   border-top: 1px solid black;
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
+  top: 50vh;
 }
-#notification.double #buttons a:nth-child(2) {
-  top: 40px;
+#notification.changecolor #buttons a:nth-child(1) {
+  background-color: #4CAF50;
 }
-#notification.single #buttons a {
-  height: 80px;
-  line-height: 80px;
+  
+#notification.changecolor #buttons a:nth-child(2) {
+  background-color: #F44336;
 }
-#notification #buttons a {
-  box-sizing: border-box;
-  top: 0;
-  display: block;
-  width: 100px;
-  font: 13px Helvetica, Arial, sans-serif;
-  text-align: center;
-  text-decoration: none;
-  right: 0;
+#notification.horizontal.single #buttons a {
+  height: 100vh;
+  line-height: 100vh;
 }
 #notification #buttons a:active {
   background-color: rgba(75, 74, 74, 0.95);
